@@ -5,7 +5,7 @@
         <div class="wizard">
           <div class="content">
             <!-- <p>Please upload the photo</p> -->
-            <input type="file" accept="image/*" capture ref="file" :disabled=isDisabled v-on:change="handleFileUpload($event.target)" />
+            <input type="file" accept="image/*" capture ref="file" v-on:change="handleFileUpload($event.target)" required />
           </div>
           <div class="action">
             <button v-on:click="submitFile();">

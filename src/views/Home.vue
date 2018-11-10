@@ -4,7 +4,7 @@
       <div class="container">
         <div class="wizard">
           <div class="content">
-            <input name="table_no" type="text" placeholder="Your table no." v-model="groupname" />
+            <input name="table_no" type="text" placeholder="Your table no." v-model="groupname" required />
           </div>
           <div class="action">
             <button v-on:click="next();">
