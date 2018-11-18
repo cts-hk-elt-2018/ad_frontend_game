@@ -4,20 +4,28 @@
       <div class="container">
         <div class="wizard">
           <div class="content">
-            <input name="table_no" type="text" placeholder="Your table no." v-model="groupname" required />
+            <input
+              name="table_no"
+              type="text"
+              placeholder="Your table no."
+              v-model="groupname"
+              required
+            />
           </div>
           <div class="action">
             <button v-on:click="next();">
               <svg style="width:60%;height:60%" viewBox="0 0 24 24">
-                <path fill="#FFFFFF" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                <path
+                  fill="#FFFFFF"
+                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="cover cover1">
-    </div>
+    <div class="cover cover1"></div>
   </div>
 </template>
 
@@ -34,8 +42,11 @@ export default {
   },
   methods: {
     next() {
-      if (this.groupname != '' && this.groupname != null) {
-        this.$router.push({ name: 'upload', query: { groupname: this.groupname } });
+      if (this.groupname != "" && this.groupname != null) {
+        this.$router.push({
+          name: "upload",
+          query: { groupname: this.groupname }
+        });
       }
     }
   }

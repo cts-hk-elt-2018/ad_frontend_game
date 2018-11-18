@@ -10,15 +10,17 @@
           <div class="action">
             <button v-on:click="next();">
               <svg style="width:60%;height:60%" viewBox="0 0 24 24">
-                <path fill="#FFFFFF" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                <path
+                  fill="#FFFFFF"
+                  d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="cover cover3">
-    </div>
+    <div class="cover cover3"></div>
   </div>
 </template>
 
@@ -37,7 +39,10 @@ export default {
   },
   methods: {
     next() {
-      this.$router.push({ name: 'upload', query: { groupname: this.groupname } });
+      this.$router.push({
+        name: "upload",
+        query: { groupname: this.groupname }
+      });
     }
   }
 };

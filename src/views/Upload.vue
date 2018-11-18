@@ -5,27 +5,35 @@
         <div class="wizard">
           <div class="content">
             <!-- <p>Please upload the photo</p> -->
-            <input type="file" accept="image/*" capture ref="file" v-on:change="handleFileUpload($event.target)" required />
+            <input
+              type="file"
+              accept="image/*"
+              capture
+              ref="file"
+              v-on:change="handleFileUpload($event.target);"
+              required
+            />
           </div>
           <div class="action">
             <button v-on:click="submitFile();">
               <svg style="width:60%;height:60%" viewBox="0 0 24 24">
-                <path fill="#FFFFFF" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                <path
+                  fill="#FFFFFF"
+                  d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
     </div>
-    <div class="cover cover2">
-    </div>
+    <div class="cover cover2"></div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import NProgress from 'nprogress';
-
+import axios from "axios";
+import NProgress from "nprogress";
 
 export default {
   name: "upload",
@@ -49,29 +57,32 @@ export default {
     submitFile() {
       if (this.file != null) {
         this.isDisabled = true;
-        NProgress.configure({ parent: '.cover' });
+        NProgress.configure({ parent: ".cover" });
         NProgress.start();
         let formData = new FormData();
         let vue = this;
-        formData.append('photo', this.file);
-        formData.append('groupName', this.groupname);
-        formData.append('message', '');
-        axios.post('http://ad-backend.fqs3taypzi.ap-southeast-1.elasticbeanstalk.com/api/public/game/upload',
-          formData,
-          {
-            headers: {
-                'Content-Type': 'multipart/form-data'
+        formData.append("photo", this.file);
+        formData.append("groupName", this.groupname);
+        formData.append("message", "");
+        axios
+          .post(
+            "http://ad-backend.fqs3taypzi.ap-southeast-1.elasticbeanstalk.com/api/public/game/upload",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data"
+              }
             }
-          }
-        ).then(function(){
-          vue.file = null;
-          NProgress.done();
-          vue.$router.push({ name: 'success', query: { groupname: vue.groupname } });
-        })
-        .catch(function(err){
-        });
+          )
+          .then(function() {
+            vue.file = null;
+            NProgress.done();
+            vue.$router.push({
+              name: "success",
+              query: { groupname: vue.groupname }
+            });
+          });
       }
-      
     }
   }
 };
