@@ -58,11 +58,11 @@ export default {
   border: none;
   background: transparent;
   font-size: 4vh;
-  font-weight: bold;
+  font-weight: 500;
   box-sizing: border-box;
-  font-family: 'Montserrat';
   padding-top: 30%;
   padding-bottom: 5%;
+  font-family: "TT Norms";
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;

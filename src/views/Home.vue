@@ -92,11 +92,11 @@ input {
   border-bottom: 3px solid #ebebeb;
   background: transparent;
   font-size: 3vh;
-  font-weight: bold;
   box-sizing: border-box;
-  font-family: 'Montserrat';
   padding-top: 15%;
   padding-bottom: 5%;
+  font-family: "TT Norms";
+  font-weight: 500;
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
