@@ -77,7 +77,7 @@ export default {
   -ms-box-shadow: 0px 3px 9.5px 0.5px rgba(0, 0, 0, 0.1);
 }
 .cover1 {
-  width: 100%;
+  width: 100vw;
   height: 33vh;
   background: #0033a0;
   position: absolute;
@@ -97,17 +97,18 @@ export default {
   bottom: 0px;
 }
 input {
-  width: 100%;
-  height: 80%;
+  position: absolute;
+  width: 50%;
   border: none;
   border-bottom: 3px solid #ebebeb;
   background: transparent;
-  font-size: 3vh;
+  font-size: 4vh;
   box-sizing: border-box;
-  padding-top: 15%;
-  padding-bottom: 5%;
   font-family: "TT Norms";
   font-weight: 500;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
@@ -120,7 +121,6 @@ input {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   -ms-transition: 0.3s ease;
-  bottom: 0px;
 }
 .action {
   padding-top: 2.5vh;

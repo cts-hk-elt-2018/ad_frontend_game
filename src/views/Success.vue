@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss">
 .cover3 {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: #0033a0;
   position: absolute;
@@ -58,16 +58,17 @@ export default {
   bottom: 0px;
 }
 #success {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  margin: 0 auto;
+  width: 95%;
   border: none;
   background: transparent;
-  font-size: 4vh;
+  font-size: 3.8vh;
   font-weight: 500;
   box-sizing: border-box;
-  padding-top: 30%;
-  padding-bottom: 5%;
   font-family: "TT Norms";
+  top: 50%;
+  transform: translateY(-50%);
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
@@ -80,6 +81,5 @@ export default {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   -ms-transition: 0.3s ease;
-  bottom: 0px;
 }
 </style>

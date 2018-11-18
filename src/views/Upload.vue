@@ -89,7 +89,7 @@ export default {
 </script>
 <style lang="scss">
 .cover2 {
-  width: 100%;
+  width: 100vw;
   height: 66vh;
   background: #0033a0;
   position: absolute;
