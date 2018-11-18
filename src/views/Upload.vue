@@ -4,7 +4,6 @@
       <div class="container">
         <div class="wizard">
           <div class="content">
-            <!-- <p>Please upload the photo</p> -->
             <input
               type="file"
               accept="image/*"

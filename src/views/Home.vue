@@ -30,9 +30,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "home",
   data() {
@@ -150,7 +147,6 @@ button {
   -ms-justify-content: center;
   color: #fff;
   background: #00a7f6;
-  font: normal normal normal 14px/1 'Material-Design-Iconic-Font';
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
