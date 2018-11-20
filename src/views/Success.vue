@@ -60,15 +60,15 @@ export default {
 #success {
   position: absolute;
   margin: 0 auto;
-  width: 95%;
   border: none;
   background: transparent;
   font-size: 3.8vh;
   font-weight: 500;
   box-sizing: border-box;
   font-family: "TT Norms";
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
