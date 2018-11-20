@@ -33,6 +33,9 @@
 <script>
 import axios from "axios";
 import NProgress from "nprogress";
+import getOrientedImage from "exif-orientation-image";
+import Pica from "pica";
+const pica = Pica();
 
 export default {
   name: "upload",
@@ -58,29 +61,78 @@ export default {
         this.isDisabled = true;
         NProgress.configure({ parent: ".cover" });
         NProgress.start();
-        let formData = new FormData();
         let vue = this;
-        formData.append("photo", this.file);
-        formData.append("groupName", this.groupname);
-        formData.append("message", "");
-        axios
-          .post(
-            "http://ad-backend.fqs3taypzi.ap-southeast-1.elasticbeanstalk.com/api/public/game/upload",
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data"
-              }
+        getOrientedImage(this.file, function(_, canvas) {
+          if (canvas.width < 1920 && canvas.height < 1080) {
+            canvas.toBlob(
+              blob => {
+                let formData = new FormData();
+                formData.append("photo", blob);
+                formData.append("groupName", vue.groupname);
+                formData.append("message", "");
+                axios
+                  .post(
+                    "http://ad-backend.fqs3taypzi.ap-southeast-1.elasticbeanstalk.com/api/public/game/upload",
+                    formData,
+                    {
+                      headers: {
+                        "Content-Type": "multipart/form-data"
+                      }
+                    }
+                  )
+                  .then(function() {
+                    vue.file = null;
+                    NProgress.done();
+                    vue.$router.push({
+                      name: "success",
+                      query: { groupname: vue.groupname }
+                    });
+                  });
+              },
+              "image/jpeg",
+              0.95
+            );
+          } else {
+            var new_width, new_height;
+            if (canvas.height / (canvas.width / 1920) < 1080) {
+              new_width = 1920;
+              new_height = Math.round(canvas.height / (canvas.width / 1920));
+            } else {
+              new_width = Math.round(canvas.width / (canvas.height / 1080));
+              new_height = 1080;
             }
-          )
-          .then(function() {
-            vue.file = null;
-            NProgress.done();
-            vue.$router.push({
-              name: "success",
-              query: { groupname: vue.groupname }
-            });
-          });
+            let dest = document.createElement("canvas");
+            dest.width = new_width;
+            dest.height = new_height;
+            pica
+              .resize(canvas, dest)
+              .then(() => pica.toBlob(dest, "image/jpeg", 0.7))
+              .then(blob => {
+                let formData = new FormData();
+                formData.append("photo", blob);
+                formData.append("groupName", vue.groupname);
+                formData.append("message", "");
+                axios
+                  .post(
+                    "http://ad-backend.fqs3taypzi.ap-southeast-1.elasticbeanstalk.com/api/public/game/upload",
+                    formData,
+                    {
+                      headers: {
+                        "Content-Type": "multipart/form-data"
+                      }
+                    }
+                  )
+                  .then(function() {
+                    vue.file = null;
+                    NProgress.done();
+                    vue.$router.push({
+                      name: "success",
+                      query: { groupname: vue.groupname }
+                    });
+                  });
+              });
+          }
+        });
       }
     }
   }
