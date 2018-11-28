@@ -106,7 +106,7 @@ export default {
             dest.height = new_height;
             pica
               .resize(canvas, dest)
-              .then(() => pica.toBlob(dest, "image/jpeg", 0.7))
+              .then(() => pica.toBlob(dest, "image/jpeg", 0.9))
               .then(blob => {
                 let formData = new FormData();
                 formData.append("photo", blob);
